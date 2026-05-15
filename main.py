@@ -55,8 +55,6 @@ def verifica_pasta():
 
         if existe:
 
-           # print("quantas paginas possue o pdf?")
-           # print("Executando programa")
             num_pags = int(input("Número de páginas: "))
             print(num_pags)
             screen_shoot(num_pags)
