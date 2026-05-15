@@ -28,9 +28,9 @@ def esquema_do_pdf(Pags):
 
 def screen_shoot(Pags):
     try:
+        print("Começando em 10 segundos..")
         paginas = Pags
         time.sleep(10)
-        print("Começando em 10 segundos..")
         for numero in range(Pags):
             pyautogui.press("rightctrl")
             resposta = s.run(["scrot", "a.png"])
@@ -41,7 +41,7 @@ def screen_shoot(Pags):
             os.system(f"mv a{numero}.png {path}")
             print(f"Arquivo -> 'a{numero}' movido para {path}.")
             print(f"Log scrot{resposta}")
-            
+
         esquema_do_pdf(paginas)
         os.system(f"rm -rf {path}")
         print(f"Diretório -> {path} removido.")
@@ -51,8 +51,8 @@ def screen_shoot(Pags):
 def verifica_pasta():
     try:
         existe = os.path.exists(path)
-        print(f"Verificando diretório padrão -> {path}")   
-        
+        print(f"Verificando diretório padrão -> {path}")
+
         if existe:
 
            # print("quantas paginas possue o pdf?")
@@ -66,7 +66,7 @@ def verifica_pasta():
             os.system(f"mkdir {path}")
             print("Qual o número total de páginas no pdf?")
             num_pags = int(input("numero de paginas: "))
-            print(num_pags)
+            print(f"número de páginas definidas {num_pags}")
             screen_shoot(num_pags)
 
     except Exception as e:
@@ -74,4 +74,6 @@ def verifica_pasta():
 
 def main():
     verifica_pasta()
-main()
+
+if __name__ == "__main__":
+    main()
